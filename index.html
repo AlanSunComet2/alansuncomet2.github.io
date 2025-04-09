@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Three Mile Island Incident Interactive Timeline</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+      font-size: 2.5rem;
+    }
+    .timeline-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      padding: 20px 0 60px 0; /* Add padding at bottom for fixed nav */
+    }
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #34495e;
+    }
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+    }
+    /* Enhanced center line */
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #3498db;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+      z-index: 1;
+    }
+    .container {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+      margin-bottom: 30px;
+    }
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+    .event {
+      padding: 20px;
+      background-color: white;
+      position: relative;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .event:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
+    .left .event {
+      border-left: 4px solid #e74c3c;
+    }
+    .right .event {
+      border-right: 4px solid #e74c3c;
+    }
+    
+    /* Connect events to timeline */
+    .connector {
+      position: absolute;
+      height: 2px;
+      background-color: #3498db;
+      top: 32px;
+      width: 40px;
+      z-index: 2;
+    }
+    .left .connector {
+      right: 0;
+    }
+    .right .connector {
+      left: 0;
+    }
+    
+    /* Event circles */
+    .event-circle {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background-color: white;
+      border: 4px solid #e74c3c;
+      border-radius: 50%;
+      top: 20px;
+      z-index: 3;
+    }
+    .left .event-circle {
+      right: -57px;
+    }
+    .right .event-circle {
+      left: -57px;
+    }
+    
+    .time {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .summary {
+      margin-bottom: 10px;
+    }
+    .details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      padding: 0 10px;
+      margin-top: 10px;
+    }
+    .expanded .details {
+      max-height: 300px;
+      padding: 10px;
+      border-top: 1px solid #eee;
+    }
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .toggle-btn {
+      font-size: 0.8rem;
+      color: #3498db;
+      cursor: pointer;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+    .toggle-btn:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+    .expanded .toggle-expand {
+      display: none;
+    }
+    .toggle-collapse {
+      display: none;
+    }
+    .expanded .toggle-collapse {
+      display: inline-block;
+    }
+    
+    /* Fixed Navigation controls */
+    .timeline-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    .timeline-nav button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+    .timeline-nav button:hover {
+      background-color: #2980b9;
+    }
+    .timeline-nav button:active {
+      transform: scale(0.98);
+    }
+    .timeline-nav .nav-text {
+      display: inline-block;
+      margin: 0 15px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+      .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      .container.right {
+        float: left;
+      }
+      .left .event-circle, .right .event-circle {
+        left: 15px;
+      }
+      .left .connector, .right .connector {
+        left: 40px;
+        width: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Three Mile Island Nuclear Incident</h1>
+  <div class="timeline-header">
+    <h2>Interactive Timeline of Events</h2>
+    <p>Click on any event to see more details</p>
+  </div>
+  
+  <div class="timeline-container">
+    <div class="timeline">
+      <div class="container left clearfix">
+        <div class="connector"></div>
+        <div class="event-circle"></div>
+        <div class="event" data-index="0">
+          <div class="time">March 28, 1979 - 4:00 AM</div>
+          <div class="summary">Feedwater pumps fail. PORV opens but sticks open, beginning coolant loss.</div>
+          <div class="details">
+            <p>The accident began when the plant's main feedwater pumps stopped running, caused by either a mechanical or electrical failure, which prevented the steam generators from removing heat.</p>
+            <p>First the turbine, then the reactor automatically shut down. Pressure in the primary system (the nuclear portion of the plant) began to increase. To prevent that pressure from becoming excessive, the PORV (pilot-operated relief valve) opened automatically. The PORV should have closed when the pressure decreased, but it became stuck open.</p>
+          </div>
+          <span class="toggle-btn toggle-expand">Click to expand</span>
+          <span class="toggle-btn toggle-collapse">Click to collapse</span>
+        </div>
+      </div>
+      
+      <div class="container right clearfix">
+        <div class="connector"></div>
+        <div class="event-circle"></div>
+        <div class="event" data-index="1">
+          <div class="time">4:00 – 4:30 AM</div>
+          <div class="summary">Operators misinterpret pressure and shut off ECCS. Core cooling degrades.</div>
+          <div class="details">
+            <p>The operators did not recognize that the plant was experiencing a loss-of-coolant accident. They believed the PORV had automatically closed, which would have been the normal response.</p>
+            <p>Control room instruments did not show the valve's actual position, and coolant continued to escape through it. Because the PORV remained stuck open, coolant from the core was draining away.</p>
+            <p>The Emergency Core Cooling System (ECCS) activated automatically but the operators, believing the core was sufficiently covered with water, manually overrode the system, making the situation worse.</p>
+          </div>
+          <span class="toggle-btn toggle-expand">Click to expand</span>
+          <span class="toggle-btn toggle-collapse">Click to collapse</span>
+        </div>
+      </div>
+      
+      <div class="container left clearfix">
+        <div class="connector"></div>
+        <div class="event-circle"></div>
+        <div class="event" data-index="2">
+          <div class="time">4:30 – 6:00 AM</div>
+          <div class="summary">Fuel rods overheat, hydrogen forms. Partial core meltdown begins.</div>
+          <div class="details">
+            <p>With insufficient cooling water, the nuclear fuel overheated. The zirconium cladding that encases the uranium fuel pellets reacted with the cooling water at high temperatures, producing hydrogen gas.</p>
+            <p>By early morning, the core had been severely damaged. About half of the core melted during the accident, though this wasn't fully understood until years later after thorough investigations.</p>
+            <p>The hydrogen created by this reaction formed a large bubble in the top of the pressure vessel, further complicating the situation.</p>
+          </div>
+          <span class="toggle-btn toggle-expand">Click to expand</span>
+          <span class="toggle-btn toggle-collapse">Click to collapse</span>
+        </div>
+      </div>
+      
+      <div class="container right clearfix">
+        <div class="connector"></div>
+        <div class="event-circle"></div>
+        <div class="event" data-index="3">
+          <div class="time">6:00 – 8:00 AM</div>
+          <div class="summary">Hydrogen bubble and radioactive steam form. NRC notified.</div>
+          <div class="details">
+            <p>Radiation alarms activated as radioactive gases from damaged fuel rods began to escape into the cooling water and subsequently into the containment building atmosphere.</p>
+            <p>Site emergency was declared at 6:56 AM, and by 7:24 AM, a general emergency was declared, indicating potential for serious radiological consequences to the public.</p>
+            <p>The Nuclear Regulatory Commission (NRC) was notified and began mobilizing resources. Though some radioactive gases were released from the plant, they were not in amounts significant enough to cause health concerns.</p>
+          </div>
+          <span class="toggle-btn toggle-expand">Click to expand</span>
+          <span class="toggle-btn toggle-collapse">Click to collapse</span>
+        </div>
+      </div>
+      
+      <div class="container left clearfix">
+        <div class="connector"></div>
+        <div class="event-circle"></div>
+        <div class="event" data-index="4">
+          <div class="time">8:00 AM – Noon</div>
+          <div class="summary">Public becomes aware. Elevated radiation detected outside plant.</div>
+          <div class="details">
+            <p>News of the accident began to spread, creating public concern. Conflicting information from officials and the plant owners further heightened public anxiety.</p>
+            <p>Small releases of radioactive gases were made to relieve pressure. Monitors detected increased radiation levels in the area around the plant, though these were generally low-level.</p>
+            <p>Pennsylvania Governor Dick Thornburgh considered evacuation plans while working with federal officials to understand the severity of the situation.</p>
+          </div>
+          <span class="toggle-btn toggle-expand">Click to expand</span>
+          <span class="toggle-btn toggle-collapse">Click to collapse</span>
+        </div>
+      </div>
+      
+      <div class="container right clearfix">
+        <div class="connector"></div>
+        <div class="event-circle"></div>
+        <div class="event" data-index="5">
+          <div class="time">March 29–31</div>
+          <div class="summary">Cooling restored. Controlled gas releases continue. Hydrogen explosion ruled out.</div>
+          <div class="details">
+            <p>Experts worked to determine how to remove the hydrogen bubble without causing an explosion. Initially, there were fears that the hydrogen might detonate, but further analysis showed that there wasn't enough oxygen in the pressure vessel to support combustion.</p>
+            <p>By March 30, cooling was largely restored, though concerns about the hydrogen bubble remained. Governor Thornburgh advised pregnant women and pre-school children within 5 miles of the plant to evacuate as a precautionary measure.</p>
+            <p>President Jimmy Carter, a trained nuclear engineer, visited the plant on April 1 to demonstrate his confidence in the management of the crisis.</p>
+          </div>
+          <span class="toggle-btn toggle-expand">Click to expand</span>
+          <span class="toggle-btn toggle-collapse">Click to collapse</span>
+        </div>
+      </div>
+      
+      <div class="container left clearfix">
+        <div class="connector"></div>
+        <div class="event-circle"></div>
+        <div class="event" data-index="6">
+          <div class="time">April 1 onward</div>
+          <div class="summary">Reactor brought to cold shutdown. Cleanup and investigation begins.</div>
+          <div class="details">
+            <p>By April 27, the hydrogen bubble was eliminated, and the reactor was brought to cold shutdown, ending the immediate crisis. The cleanup effort would take more than 12 years and cost approximately $973 million.</p>
+            <p>The President's Commission on the Accident at Three Mile Island (also known as the Kemeny Commission) was formed to investigate the accident. Their report led to sweeping changes in emergency response planning, reactor operator training, and other areas of nuclear power plant operations.</p>
+            <p>The accident at Three Mile Island remains the most serious in U.S. commercial nuclear power plant history, though its health and environmental consequences were minimal.</p>
+          </div>
+          <span class="toggle-btn toggle-expand">Click to expand</span>
+          <span class="toggle-btn toggle-collapse">Click to collapse</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Fixed navigation controls -->
+  <div class="timeline-nav">
+    <button id="prev-event">← Previous Event</button>
+    <span class="nav-text" id="event-counter">Event 1 of 7</span>
+    <button id="next-event">Next Event →</button>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle expandable event details
+      const events = document.querySelectorAll('.event');
+      const eventCounter = document.getElementById('event-counter');
+      
+      events.forEach(event => {
+        event.addEventListener('click', function() {
+          this.classList.toggle('expanded');
+        });
+      });
+      
+      // Navigation controls
+      const prevBtn = document.getElementById('prev-event');
+      const nextBtn = document.getElementById('next-event');
+      let currentIndex = 0;
+      
+      function updateCounter() {
+        eventCounter.textContent = `Event ${currentIndex + 1} of ${events.length}`;
+      }
+      
+      function scrollToEvent(index) {
+        if (index >= 0 && index < events.length) {
+          // Remove highlight from all events
+          events.forEach(e => e.style.boxShadow = '0 4px 16px rgba(0,0,0,0.1)');
+          
+          // Highlight current event
+          events[index].style.boxShadow = '0 0 0 3px #e74c3c, 0 8px 24px rgba(0,0,0,0.15)';
+          
+          // Scroll to event
+          events[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Expand current event
+          events.forEach(e => e.classList.remove('expanded'));
+          events[index].classList.add('expanded');
+          
+          currentIndex = index;
+          updateCounter();
+        }
+      }
+      
+      prevBtn.addEventListener('click', function() {
+        if (currentIndex > 0) {
+          scrollToEvent(currentIndex - 1);
+        }
+      });
+      
+      nextBtn.addEventListener('click', function() {
+        if (currentIndex < events.length - 1) {
+          scrollToEvent(currentIndex + 1);
+        }
+      });
+      
+      // Optional keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+          if (currentIndex > 0) {
+            scrollToEvent(currentIndex - 1);
+          }
+        } else if (e.key === 'ArrowRight') {
+          if (currentIndex < events.length - 1) {
+            scrollToEvent(currentIndex + 1);
+          }
+        }
+      });
+      
+      // Initialize
+      updateCounter();
+      // Highlight first event initially
+      setTimeout(() => {
+        scrollToEvent(0);
+      }, 500);
+    });
+  </script>
+</body>
+</html>
