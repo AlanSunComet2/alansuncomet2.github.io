@@ -1,0 +1,121 @@
+/* Basic site-wide styling */
+body {
+    font-family: 'Times New Roman', Times, serif; /* As recommended in assignment [cite: 35] */
+    line-height: 1.6;
+    background-color: #fdfdfa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4a5c43; /* A 'prairie green' color */
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav {
+    background: #333;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background: #555;
+}
+
+main {
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+}
+
+h2 {
+    border-bottom: 2px solid #4a5c43;
+    padding-bottom: 0.5rem;
+}
+
+.contention {
+    font-size: 1.1em;
+    font-style: italic;
+    background: #f4f4f4;
+    border-left: 5px solid #4a5c43;
+    padding: 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+}
+
+/* Interactive Map Styling */
+#interactive-map-container {
+    position: relative;
+    width: 100%;
+    border: 2px solid #333;
+}
+
+.map-background {
+    width: 100%;
+    display: block;
+}
+
+/* Map Pin Styling */
+.map-pin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+.pin-history {
+    background-color: #b33939; /* Red for historical sites */
+}
+
+.pin-restoration {
+    background-color: #3a7d44; /* Green for restoration sites */
+}
+
+/* Pop-up Styling  */
+.popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    width: 300px;
+    background: white;
+    border: 1px solid #333;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    padding: 1rem;
+    z-index: 10;
+}
+
+.popup h4 {
+    margin-top: 0;
+}
+
+.popup .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
