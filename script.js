@@ -16,7 +16,10 @@ const mapData = [
         y_percent: 42.1, // % from top (You still need to adjust this!)
         title: 'Camas Gathering Grounds',
         text: 'These fields were vital for harvesting camas bulbs, a primary food source managed by the Palus.',
-        image: 'native-prairie.jpg', // Using your new native prairie image
+        
+        // --- FIX 1: Spelling corrected from 'native-prairie.jpg' ---
+        image: 'native-prarie.jpg', // Using your new native prairie image
+        
         audio: ''
     },
     {
@@ -24,9 +27,11 @@ const mapData = [
         x_percent: 55.0, // % from left (You still need to adjust this!)
         y_percent: 40.0, // % from top (You still need to adjust this!)
         title: 'The Consequence: Soil Erosion', // NEW TITLE
-        // --- THIS LINE IS NOW FIXED ---
         text: 'The displacement of the Palus led to intensive farming on steep slopes, resulting in catastrophic soil erosion, as seen in this photo.', // NEW TEXT
-        image: 'soil-erosion.jpg', // NEW IMAGE
+        
+        // --- FIX 2: Extension corrected from '.jpg' to '.png' ---
+        image: 'soil-erosion.png', // NEW IMAGE
+        
         audio: ''
     },
     {
@@ -34,9 +39,11 @@ const mapData = [
         x_percent: 48.0, // % from left (You still need to adjust this!)
         y_percent: 50.0, // % from top (You still need to adjust this!)
         title: 'Modern Restoration Efforts', 
-        // --- THIS LINE IS NOW FIXED ---
         text: 'Groups like PCEI are actively working to restore Palouse habitats, such as this project on Bobs Creek.', 
-        image: 'pcei-restoration.jpg', 
+        
+        // --- FIX 3: Extension corrected from '.jpg' to '.jpeg' ---
+        image: 'pcei-restoration.jpeg', 
+        
         audio: ''
     }
 ];
