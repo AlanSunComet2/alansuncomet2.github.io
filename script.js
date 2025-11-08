@@ -1,32 +1,32 @@
 // This acts as your "backend" database for the map.
-// Add all your map pin data here.
+// I have implemented your images here.
 const mapData = [
     {
         type: 'history',
-        x_percent: 45.2, // % from left
-        y_percent: 60.5, // % from top
+        x_percent: 45.2, // % from left (You still need to adjust this!)
+        y_percent: 60.5, // % from top (You still need to adjust this!)
         title: 'Palus Village (Palus)',
-        text: 'This was a major permanent settlement for the Palus people, located at the confluence of the Snake and Palouse rivers.',
-        image: '',
-        audio: '[Audio file of Palus oral history]' // 
+        text: 'This was a major permanent settlement for the Palus people, located near the confluence of the Snake and Palouse rivers.',
+        image: 'palus-woman-child.jpg', // NEW IMAGE
+        audio: '[Audio file of Palus oral history]' 
     },
     {
         type: 'history',
-        x_percent: 30.8,
-        y_percent: 42.1,
+        x_percent: 30.8, // % from left (You still need to adjust this!)
+        y_percent: 42.1, // % from top (You still need to adjust this!)
         title: 'Camas Gathering Grounds',
         text: 'These fields were vital for harvesting camas bulbs, a primary food source managed by the Palus.',
-        image: '',
+        image: '', // No image provided for this, which is fine
         audio: ''
     },
     {
-        type: 'restoration',
-        x_percent: 52.0,
-        y_percent: 35.0,
-        title: 'PCEI Restoration Site',
-        text: 'A modern restoration project by the Palouse Conservation Environmental Institute, working to replant native grasses. [cite: 22]',
-        image: '',
-        audio: '[Audio file of interview with conservationist]' // 
+        type: 'history', // Changed from 'restoration' to fit the image
+        x_percent: 55.0, // % from left (You still need to adjust this!)
+        y_percent: 40.0, // % from top (You still need to adjust this!)
+        title: 'The Agricultural Transformation', // NEW TITLE
+        text: 'The displacement of the Palus led to intensive, large-scale farming, as seen in this historical photo of a drill seeder. This practice transformed the native prairie ecosystem.', // NEW TEXT
+        image: 'palouse-farming.jpg', // NEW IMAGE
+        audio: ''
     }
 ];
 
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Create the Pop-up
         const popup = document.createElement('div');
         popup.className = 'popup';
-        popup.style.left = item.x_percent + '%'; // Position popup near pin
-        popup.style.top = item.y_percent + '%';  // (Can be improved)
+        popup.style.left = item.x_percent + '%'; 
+        popup.style.top = item.y_percent + '%';  
 
         // 3. Add content to the Pop-up
         let popupContent = `
@@ -60,8 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (item.audio) {
-            // Your professor warned about copyright [cite: 24]
-            // Be sure to use pre-recorded histories, e.g., from the Plateau Peoples' Portal [cite: 18]
             popupContent += `<audio controls src="${item.audio}">Your browser does not support the audio element.</audio>`;
         }
         
@@ -69,9 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 4. Add click event to show/hide
         pin.addEventListener('click', () => {
-            // Hide all other popups
             document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
-            // Show this one
             popup.style.display = 'block';
         });
 
