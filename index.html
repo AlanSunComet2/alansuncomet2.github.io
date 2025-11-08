@@ -12,6 +12,7 @@
         <nav>
             <a href="#home">Home</a>
             <a href="#history">A Displaced People</a>
+            <a href="#gallery">Gallery</a>
             <a href="#restoration">An Altered Land</a>
             <a href="#map">Interactive Map</a>
             <a href="bibliography.html">Bibliography</a>
@@ -21,42 +22,67 @@
     <main>
         <section id="home">
             <h2>Welcome</h2>
-            <p>Welcome to "The Unseen Roots," a project exploring the inseparable link between the Palus people and the Palouse Prairie...</p>
+            <p>Welcome to "The Unseen Roots," a project exploring the inseparable link between the Palus people and the Palouse Prairie. When you look at the Palouse, you see rolling hills of wheat. My project is about what we *don't* see—the history and the people this agricultural landscape replaced.</p>
             <p class="contention">
                 <u>I will contend that the historical removal and displacement of the Palus people directly contributed to the extensive agricultural transformation of the landscape, and that modern efforts to restore the native prairie must acknowledge and incorporate Indigenous knowledge and land management practices to be truly effective.</u>
             </p>
         </section>
 
-        <section id="history">
-            <h2>A Displaced People: The Palus (Palouse)</h2>
-            <p>Before the arrival of settlers, the Palouse was not an empty wilderness; it was a carefully managed environment...</p>
-            
-            <img src="palus-woman-child.jpg" alt="Historical photo of a Palus woman and child on horseback.">
-            
-            <p>This changed with the treaties of the 1850s... The <i>Dawes Act of 1887</i> was the final blow...</p>
+        <section id="history" class="full-width-image" style="background-image: url('palus-woman-child.jpg');">
+            <div class="content-box">
+                <h2>A Displaced People</h2>
+                <p>Before settlers, the Palouse was a carefully managed environment. The Palus lived in semi-permanent villages, migrating in "seasonal rounds" to fish, hunt, and gather vital "first foods" like camas bulbs. This was active stewardship.</p>
+                <p>The transformation to farming was methodical. The <strong>Dawes Act of 1887</strong> broke up communal Tribal lands into small, individual plots. "Surplus" land was opened to white homesteaders, replacing a shared ecosystem with a grid of private property.</p>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <p>Scroll sideways to see the story of the land.</p>
+            <div class="scrolling-wrapper">
+                <div class="gallery-card">
+                    <img src="palus-woman-child.jpg" alt="Historical photo of a Palus woman and child on horseback.">
+                    <p>A Palus woman and child on horseback, representing a life of mobility and deep knowledge of the land.</p>
+                </div>
+                <div class="gallery-card">
+                    <img src="palouse-farming.jpg" alt="Historical photo of a tractor drill seeding on a steep Palouse hill.">
+                    <p>The agricultural transformation: a tractor drill seeder on a steep hill, replacing the native prairie ecosystem.</p>
+                </div>
+                <div class="gallery-card">
+                    <img src="palouse-map.gif" alt="Map of the Palouse region core area.">
+                    <p>A historical map showing the "Core Area" of the Palouse, the heart of the transformation.</p>
+                </div>
+                <div class="gallery-card placeholder">
+                    <p>Add another image and description here.</p>
+                </div>
+            </div>
         </section>
 
         <section id="restoration">
-            <h2>An Altered Land: Restoring the Prairie</h2>
-            <p>Today, less than 1% of the original Palouse Prairie remains... Organizations like the <strong>Palouse Conservation Environmental Institute (PCEI)</strong> are doing critical work...</p>
+            <h2>An Altered Land</h2>
+            <p>Today, less than 1% of the original Palouse Prairie remains. Organizations like the <strong>Palouse Conservation Environmental Institute (PCEI)</strong> are doing critical work to restore small patches of this native landscape.</p>
             
-            <img src="palouse-farming.jpg" alt="Historical photo of a tractor drill seeding on a steep Palouse hill.">
+            <img src="palouse-farming.jpg" alt="Historical photo of a tractor drill seeding on a steep Palouse hill." class="large-content-image">
             
-            <p>However, this is where my contention comes in. Ecological restoration that ignores the region's human history is incomplete...</p>
+            <p>However, this is where my contention comes in. Ecological restoration that ignores the region's human history is incomplete. To be truly effective, these efforts must incorporate <strong>Traditional Ecological Knowledge (TEK)</strong>.</p>
             <ul>
-                <li><strong>Beyond Planting:</strong> It means reintroducing Indigenous land management practices...</li>
-                <li><strong>A Holistic View:</strong> It means adopting a different worldview, as Indigenous scholars like JoAnn Archibald explain...</li>
-                <li><strong>Cultural Restoration:</strong> Effective restoration is also cultural...</li>
+                <li><strong>It's a Holistic Worldview:</strong> TEK is a worldview based on respect, reciprocity, and relationships, viewing the land not as a resource but as a relative to be honored.</li>
+                <li><strong>It's Active Stewardship:</strong> This includes practices like cultural burning and re-prioritizing "first foods" like camas, which co-evolved with human harvesting.</li>
+                <li><strong>It's Cultural Restoration:</strong> True restoration is also cultural, becoming a vehicle for revitalization by partnering with the descendants of the Palus people.</li>
             </ul>
+        </section>
+
+        <section id="conclusion">
+            <h2>A Path Forward</h2>
+            <p>The ecological state of the prairie and the human history of the Palus are not two separate issues; they are one. The landscape we see today was only possible <em>after</em> the removal of its original stewards.</p>
+            <p>Therefore, we cannot restore one without the other. The goal is not just to return the *plants*, but to restore the *relationship*. True restoration must be ecological, cultural, and social.</p>
         </section>
 
         <section id="map">
             <h2>Interactive Map</h2>
             <p>Click the pins on the map to learn more about historical sites and modern restoration efforts.</p>
             <div id="interactive-map-container">
-                
                 <img src="palouse-map.gif" alt="Map of the Palouse region core area." class="map-background">
-                
                 </div>
         </section>
 
@@ -65,7 +91,8 @@
             <p>All sources used for this project are available on a separate page.</p>
             <p><a href="bibliography.html" style="font-weight: bold; font-size: 1.1em;">Click here to view the full bibliography.</a></p>
         </section>
-        </main>
+        
+    </main>
 </body>
 <script src="script.js"></script>
 </html>
