@@ -41,7 +41,7 @@ section {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin: 0; /* <-- CSS FIX #1 ADDED HERE */
+    margin: 0; /* <-- FIXED: Added this rule to fix the layout */
 }
 
 /* Reverses the order for visual variety */
@@ -78,7 +78,7 @@ section {
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    margin: 0; /* <-- CSS FIX #2 ADDED HERE */
+    margin: 0;
 }
 
 .gallery-card p {
@@ -116,5 +116,5 @@ section img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 1rem 0; /* This rule was causing the layout issue */
+    margin: 1rem 0;
 }
