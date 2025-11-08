@@ -1,104 +1,119 @@
 /* ---------------------------------- */
-/* --- NEW STYLES for Apple UI --- */
+/* --- NEW Apple-Inspired Styles --- */
 /* ---------------------------------- */
 
-/* 1. Full-Width Image Section */
-.full-width-image {
-    width: 100vw; /* 100% of the viewport width */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    
-    /* Image settings */
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed; /* Parallax-like effect */
-    
-    /* Text legibility */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 6rem 1rem;
-    box-sizing: border-box; /* Ensures padding doesn't break width */
+/* 1. Clean Section Styling (Lots of White Space) */
+section {
+    padding: 4rem 2rem; /* More padding for white space */
+    border-bottom: 1px solid #eee; /* Light dividers */
 }
 
-/* Adds a dark overlay so white text is readable */
-.full-width-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); 
-}
-
-/* Container for text inside the full-width image */
-.content-box {
-    position: relative; /* Sits on top of the dark overlay */
+/* Center-align text-only sections */
+.text-section {
     max-width: 800px;
-    background: rgba(255, 255, 255, 0.9); /* Opaque white background */
-    color: #333; /* Dark text */
-    padding: 2rem;
-    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+.text-section h2 {
+    text-align: center;
+}
+.text-section p {
+    font-size: 1.1em;
+    color: #333;
 }
 
-/* 2. Scrolling Gallery Section */
+/* 2. Dual Column Layout (Text + Image) */
+.dual-column {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.dual-column .text-content {
+    flex: 1; /* Takes up 50% of the space */
+}
+.dual-column .image-content {
+    flex: 1; /* Takes up 50% of the space */
+}
+.dual-column .image-content img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Reverses the order for visual variety */
+.dual-column.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 3. Horizontal Scrolling Gallery */
 .scrolling-wrapper {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto; /* This is the key to horizontal scrolling */
-    padding-bottom: 1.5rem; /* Space for the scrollbar */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+    overflow-x: auto; /* The key to horizontal scrolling */
+    padding: 1.5rem 0;
+    -webkit-overflow-scrolling: touch; /* Smooth on mobile */
 }
 
 .gallery-card {
-    flex: 0 0 auto; /* Prevents cards from shrinking */
-    width: 350px; /* Width of each card */
+    flex: 0 0 auto;
+    width: 320px; /* Set a fixed width for cards */
     margin-right: 1.5rem;
-    background: #f4f4f4;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+}
+.gallery-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .gallery-card img {
     width: 100%;
-    height: 250px;
-    object-fit: cover; /* Ensures image fills the space */
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    margin: 0; /* Override default image margin */
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0;
 }
 
 .gallery-card p {
     padding: 1rem;
     font-size: 0.9em;
+    text-align: left;
+    color: #555;
+}
+.gallery-card p b {
+    color: #000;
+    display: block;
+    margin-bottom: 0.25rem;
 }
 
-/* Style for the placeholder card */
-.gallery-card.placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 400px; /* Match the total height of other cards */
-    color: #888;
+/* 4. Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .dual-column {
+        flex-direction: column; /* Stack on mobile */
+    }
+    .dual-column.reverse {
+        flex-direction: column; /* Stack on mobile */
+    }
+    section {
+        padding: 2rem 1rem;
+    }
 }
 
-/* 3. Large Content Image Style */
-.large-content-image {
-    width: 100%; /* Stretches to 100% of the 'main' container */
-    max-width: 100%; /* Redundant, but good practice */
-    height: auto;
-    border-radius: 5px;
-}
-
-/* 4. Minor Fixes for New Layout */
+/* 5. General Cleanup */
+/* Remove the override that was causing layout issues */
 main {
-    overflow-x: hidden; /* Prevents full-width sections from causing issues */
+    overflow-x: initial; 
 }
-
-/* Override default section padding for full-width sections */
-section.full-width-image {
-    padding: 6rem 1rem; 
+/* Ensure all section images are consistent */
+section img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
 }
