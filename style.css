@@ -118,3 +118,92 @@ section img {
     display: block;
     margin: 1rem 0;
 }
+
+/* ---------------------------------- */
+/* --- 6. Interactive Map Styles --- */
+/* ---------------------------------- */
+
+#interactive-map-container {
+    position: relative; /* This is essential for placing the pins */
+    max-width: 600px; /* Keep map from being too large */
+    margin: 0 auto;
+}
+
+.map-background {
+    width: 100%;
+    height: auto;
+}
+
+.map-pin {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transform: translate(-50%, -50%); /* Centers pin on the (x,y) percent */
+    transition: transform 0.2s ease;
+}
+
+.map-pin:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* History pins (Red) */
+.pin-history {
+    background-color: #d9534f; /* A theme-appropriate red */
+}
+
+/* Restoration pins (Green) */
+.pin-restoration {
+    background-color: #5cb85c; /* A theme-appropriate green */
+}
+
+/* Pop-up box */
+.popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    min-width: 280px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    padding: 1rem;
+    z-index: 100;
+    /* Move it so it's centered above its pin */
+    transform: translate(-50%, -110%);
+}
+
+.popup h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1em;
+    color: #000;
+}
+
+.popup p {
+    margin: 0 0 1rem 0;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.popup img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.popup .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+}
+
+.popup .close-btn:hover {
+    color: #000;
+}
