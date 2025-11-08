@@ -24,7 +24,8 @@ const mapData = [
         x_percent: 55.0, // % from left (You still need to adjust this!)
         y_percent: 40.0, // % from top (You still need to adjust this!)
         title: 'The Consequence: Soil Erosion', // NEW TITLE
-        [cite_start]text: 'The displacement of the Palus led to intensive farming on steep slopes, resulting in catastrophic soil erosion, as seen in this photo[cite: 3].', // NEW TEXT
+        // --- THIS LINE IS NOW FIXED ---
+        text: 'The displacement of the Palus led to intensive farming on steep slopes, resulting in catastrophic soil erosion, as seen in this photo.', // NEW TEXT
         image: 'soil-erosion.jpg', // NEW IMAGE
         audio: ''
     },
@@ -33,7 +34,8 @@ const mapData = [
         x_percent: 48.0, // % from left (You still need to adjust this!)
         y_percent: 50.0, // % from top (You still need to adjust this!)
         title: 'Modern Restoration Efforts', 
-        [cite_start]text: 'Groups like PCEI are actively working to restore Palouse habitats, such as this project on Bobs Creek[cite: 4].', 
+        // --- THIS LINE IS NOW FIXED ---
+        text: 'Groups like PCEI are actively working to restore Palouse habitats, such as this project on Bobs Creek.', 
         image: 'pcei-restoration.jpg', 
         audio: ''
     }
