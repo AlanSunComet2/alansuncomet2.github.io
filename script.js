@@ -1,5 +1,5 @@
 // This acts as your "backend" database for the map.
-// I have implemented your images here.
+// I have implemented your new images here.
 const mapData = [
     {
         type: 'history',
@@ -7,8 +7,8 @@ const mapData = [
         y_percent: 60.5, // % from top (You still need to adjust this!)
         title: 'Palus Village (Palus)',
         text: 'This was a major permanent settlement for the Palus people, located near the confluence of the Snake and Palouse rivers.',
-        image: 'palus-woman-child.jpg', // NEW IMAGE
-        audio: '[Audio file of Palus oral history]' 
+        image: 'palus-woman-child.jpg', 
+        audio: '' 
     },
     {
         type: 'history',
@@ -16,16 +16,25 @@ const mapData = [
         y_percent: 42.1, // % from top (You still need to adjust this!)
         title: 'Camas Gathering Grounds',
         text: 'These fields were vital for harvesting camas bulbs, a primary food source managed by the Palus.',
-        image: '', // No image provided for this, which is fine
+        image: 'native-prairie.jpg', // Using your new native prairie image
         audio: ''
     },
     {
-        type: 'history', // Changed from 'restoration' to fit the image
+        type: 'history', 
         x_percent: 55.0, // % from left (You still need to adjust this!)
         y_percent: 40.0, // % from top (You still need to adjust this!)
-        title: 'The Agricultural Transformation', // NEW TITLE
-        text: 'The displacement of the Palus led to intensive, large-scale farming, as seen in this historical photo of a drill seeder. This practice transformed the native prairie ecosystem.', // NEW TEXT
-        image: 'palouse-farming.jpg', // NEW IMAGE
+        title: 'The Consequence: Soil Erosion', // NEW TITLE
+        [cite_start]text: 'The displacement of the Palus led to intensive farming on steep slopes, resulting in catastrophic soil erosion, as seen in this photo[cite: 3].', // NEW TEXT
+        image: 'soil-erosion.jpg', // NEW IMAGE
+        audio: ''
+    },
+    {
+        type: 'restoration', // Added a new pin for restoration
+        x_percent: 48.0, // % from left (You still need to adjust this!)
+        y_percent: 50.0, // % from top (You still need to adjust this!)
+        title: 'Modern Restoration Efforts', 
+        [cite_start]text: 'Groups like PCEI are actively working to restore Palouse habitats, such as this project on Bobs Creek[cite: 4].', 
+        image: 'pcei-restoration.jpg', 
         audio: ''
     }
 ];
